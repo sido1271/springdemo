@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:util="http://www.springframework.org/schema/util"
     xmlns:context="http://www.springframework.org/schema/context"
     xsi:schemaLocation="http://www.springframework.org/schema/beans
     http://www.springframework.org/schema/beans/spring-beans.xsd
@@ -17,6 +18,20 @@
     
     <bean id="myPrintService"
     	class="com.gmail.kursspring.PrintServiceImpl">
+    </bean>
+    
+    <bean id="myDateService"
+    	class="com.gmail.kursspring.DateServiceImpl">
+    </bean>
+    
+    <bean id="myDecorator"
+    	class="com.gmail.kursspring.Decorator">
+    	<property name="type" value="DECORATOR" />
+    </bean>
+    
+    <bean id="myElectrician"
+    	class="com.gmail.kursspring.Electrician">
+    	<property name="type" value="ELECTRICIAN" />
     </bean>
     
     <bean id="myRenovationCompany"
