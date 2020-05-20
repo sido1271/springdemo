@@ -7,7 +7,7 @@ public class RenovationCompany implements Company {
 	
 	private PrintService printService;
 	
-	public RenovationCompany(PrintServiceImpl thePrintService) {
+	public RenovationCompany(PrintService thePrintService) {
 		System.out.println("Inside an argumented constructor - RenovationCompany(PrintService)");
 		this.printService = thePrintService;
 	}
