@@ -5,10 +5,10 @@ public class RenovationCompany implements Company {
 	private String compName;
 	private String compNip;
 	
-	private PrintServiceImpl printService;
+	private PrintService printService;
 	
 	public RenovationCompany(PrintServiceImpl thePrintService) {
-		System.out.println("Inside an argumented constructor - RenovationCompany(PrintServiceImpl)");
+		System.out.println("Inside an argumented constructor - RenovationCompany(PrintService)");
 		this.printService = thePrintService;
 	}
 
