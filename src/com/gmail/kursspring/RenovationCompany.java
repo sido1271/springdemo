@@ -34,7 +34,7 @@ public class RenovationCompany implements Company {
 
 	@Override
 	public void printDate() {
-		System.out.println(dateService.getDate());
+		
 	}
 
 	@Override
