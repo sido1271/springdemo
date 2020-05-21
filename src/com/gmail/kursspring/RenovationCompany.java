@@ -6,10 +6,14 @@ public class RenovationCompany implements Company {
 	private String compNip;
 	
 	private PrintService printService;
+	private PriceService priceService;
+	private DateService dateService;
 	
-	public RenovationCompany(PrintService thePrintService) {
+	public RenovationCompany(PrintService thePrintService, PriceService thePriceService, DateService theDateService) {
 		System.out.println("Inside an argumented constructor - RenovationCompany(PrintService)");
 		this.printService = thePrintService;
+		this.priceService = thePriceService;
+		this.dateService = theDateService;
 	}
 
 	public void setCompName(String companyName) {
@@ -30,12 +34,13 @@ public class RenovationCompany implements Company {
 
 	@Override
 	public void printDate() {
-
+		System.out.println(dateService.getDate());
 	}
 
 	@Override
 	public void printPrice() {
-
+		System.out.println("Decorator price: " + priceService.getPrice(SpecialistType.DECORATOR));
+		System.out.println("Electrician price: " + priceService.getPrice(SpecialistType.ELECTRICIAN));
 	}
 
 }
