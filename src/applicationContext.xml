@@ -6,7 +6,9 @@
     xsi:schemaLocation="http://www.springframework.org/schema/beans
     http://www.springframework.org/schema/beans/spring-beans.xsd
     http://www.springframework.org/schema/context
-    http://www.springframework.org/schema/context/spring-context.xsd">
+    http://www.springframework.org/schema/context/spring-context.xsd
+    http://www.springframework.org/schema/util 
+    http://www.springframework.org/schema/util/spring-util-3.0.xsd">
     
     <context:property-placeholder location="classpath:company.properties"/>
 
@@ -16,12 +18,22 @@
     	<property name="printedLoggerLevel" value="FINE" />
     </bean>
     
+    <util:map id="tariff">
+    	<entry key="DECORATOR" value="3200" />
+    	<entry key="ELECTRICIAN" value="4660" />
+    </util:map>
+    
     <bean id="myPrintService"
     	class="com.gmail.kursspring.PrintServiceImpl">
     </bean>
     
     <bean id="myDateService"
     	class="com.gmail.kursspring.DateServiceImpl">
+    </bean>
+    
+    <bean id="myPriceService"
+    	class="com.gmail.kursspring.PriceServiceImpl">
+    	<constructor-arg ref="tariff" />
     </bean>
     
     <bean id="myDecorator"
@@ -33,14 +45,18 @@
     	class="com.gmail.kursspring.Electrician">
     	<property name="type" value="ELECTRICIAN" />
     </bean>
-    
+
     <bean id="myRenovationCompany"
     	class="com.gmail.kursspring.RenovationCompany">
     	<constructor-arg ref="myPrintService" />
+    	<constructor-arg ref="myPriceService" />
+    	<constructor-arg ref="myDateService" />
     	
     	<property name="compName" value="${foo.name}" />
     	<property name="compNip" value="${foo.nip}" />
     </bean>
+        
+
     
 </beans>
 
