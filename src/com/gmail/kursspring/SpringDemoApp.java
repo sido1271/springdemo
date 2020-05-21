@@ -12,10 +12,12 @@ public class SpringDemoApp {
 		Company company = context.getBean("myRenovationCompany", Company.class);
 		Specialist decorSpec = context.getBean("myDecorator", Specialist.class);
 		Specialist electricSpec = context.getBean("myElectrician", Specialist.class);
-
+		
 		company.printInformations();
 		System.out.println(decorSpec.getSpecialistType());
 		System.out.println(electricSpec.getSpecialistType());
+		
+		company.printPrice();
 		
 		context.close();
 	}
