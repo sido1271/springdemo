@@ -3,22 +3,29 @@ package com.gmail.kursspring;
 public class Decorator implements Specialist {
 
 	private SpecialistType type;
+	private PriceService priceService;
 	
 	public Decorator() {
 		
 	}
 
-	public Decorator(SpecialistType type) {
+	public Decorator(SpecialistType type, PriceServiceImpl priceService) {
 		this.type = type;
+		this.priceService = priceService;
 	}
 	
-	public void setType(SpecialistType type) {
-		this.type = type;
+	public SpecialistType getType() {
+		return type;
 	}
 	
 	@Override
-	public String getSpecialistType() {
+	public String introduceSpecialist() {
 		return type.getSpecType();
+	}
+
+	@Override
+	public Double getPrices() {
+		return priceService.getPrice(getType());
 	}
 
 }
