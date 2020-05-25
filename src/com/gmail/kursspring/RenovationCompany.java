@@ -1,6 +1,5 @@
 package com.gmail.kursspring;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class RenovationCompany implements Company {
@@ -9,14 +8,12 @@ public class RenovationCompany implements Company {
 	private String compNip;
 	
 	private PrintService printService;
-	private PriceService priceService;
 	private DateService dateService;
 	private List<Specialist> specialists;
 	
-	public RenovationCompany(PrintService thePrintService, PriceService thePriceService, DateService theDateService, List<Specialist> theSpecialists) {
+	public RenovationCompany(PrintService thePrintService, DateService theDateService, List<Specialist> theSpecialists) {
 		System.out.println("Inside an argumented constructor - RenovationCompany(PrintService)");
 		this.printService = thePrintService;
-		this.priceService = thePriceService;
 		this.dateService = theDateService;
 		this.specialists = theSpecialists;
 	}
@@ -44,11 +41,10 @@ public class RenovationCompany implements Company {
 
 	@Override
 	public void printPrice() {
-		System.out.println("Decorator price: " + priceService.getPrice(SpecialistType.DECORATOR));
-		System.out.println("Electrician price: " + priceService.getPrice(SpecialistType.ELECTRICIAN));
 		
-		// for (Specialist e : specialists) {
-		//	System.out.println(priceService.getPrice(e));
+		 for (Specialist e : specialists) {
+			 System.out.println(e.getPrices());		
+		 }
 	}
 }
 
