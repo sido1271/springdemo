@@ -38,12 +38,14 @@
     
     <bean id="myDecorator"
     	class="com.gmail.kursspring.Decorator">
-    	<property name="type" value="DECORATOR" />
+    	<constructor-arg type="com.gmail.kursspring.SpecialistType" value="DECORATOR"/>
+    	<constructor-arg ref="myPriceService" />
     </bean>
     
     <bean id="myElectrician"
     	class="com.gmail.kursspring.Electrician">
-    	<property name="type" value="ELECTRICIAN" />
+    	<constructor-arg type="com.gmail.kursspring.SpecialistType" value="ELECTRICIAN"/>
+    	<constructor-arg ref="myPriceService" />
     </bean>
     
     <util:list id="mySpecialistsList" value-type="com.gmail.kursspring.Specialist">
@@ -54,7 +56,6 @@
     <bean id="myRenovationCompany"
     	class="com.gmail.kursspring.RenovationCompany">
     	<constructor-arg ref="myPrintService" />
-    	<constructor-arg ref="myPriceService" />
     	<constructor-arg ref="myDateService" />
     	<constructor-arg ref="mySpecialistsList" />
     	
