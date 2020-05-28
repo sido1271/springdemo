@@ -1,9 +1,9 @@
 package com.gmail.kursspring;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public interface DateService {
 	
-	public Date getDate();
+	public LocalDate getDate();
 
 }
