@@ -14,10 +14,11 @@ public class SpringDemoApp {
 		Specialist electricSpec = context.getBean("myElectrician", Specialist.class);
 		
 		company.printInformations();
-		System.out.println(decorSpec.getSpecialistType());
-		System.out.println(electricSpec.getSpecialistType());
+		System.out.println(decorSpec.introduceSpecialist());
+		System.out.println(electricSpec.introduceSpecialist());
 		
 		company.printPrice();
+		company.printDate();
 		
 		context.close();
 	}
