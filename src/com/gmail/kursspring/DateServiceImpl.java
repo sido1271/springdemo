@@ -4,11 +4,13 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
 import java.time.temporal.ChronoUnit;
+import java.util.Locale;
 
 public class DateServiceImpl implements DateService {
 
 	private LocalDate today = LocalDate.now();
-	private LocalDate renovationDate = today.plus(2, ChronoUnit.WEEKS);
+	private final Locale locale = new Locale("en", "EN");
+	private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MMMM yyyy", locale);
 	
 	public DateServiceImpl() {
 		
@@ -20,10 +22,7 @@ public class DateServiceImpl implements DateService {
 	
 	@Override
 	public LocalDate getDate() {
-		String formattedDate = today.format(DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL));
-		String formattedRenovationDate = renovationDate.format(DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL));
-		System.out.println("Today is " + formattedDate);
-		System.out.println("Renovation will start on " + formattedRenovationDate);
+		System.out.println("Today is " + today.format(formatter));
 		return today.plus(2, ChronoUnit.WEEKS);
 	}
 
