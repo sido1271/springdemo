@@ -1,8 +1,12 @@
 package com.gmail.kursspring;
 
+import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.Locale;
 
 public class RenovationCompany implements Company {
+	
+	private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MMMM yyyy", new Locale("en", "EN"));
 	
 	private String compName;
 	private String compNip;
@@ -12,39 +16,47 @@ public class RenovationCompany implements Company {
 	private List<Specialist> specialists;
 	
 	public RenovationCompany(PrintService thePrintService, DateService theDateService, List<Specialist> theSpecialists) {
-		System.out.println("Inside an argumented constructor - RenovationCompany(PrintService)");
 		this.printService = thePrintService;
 		this.dateService = theDateService;
 		this.specialists = theSpecialists;
 	}
 
 	public void setCompName(String companyName) {
-		System.out.println("Inside setter of CompanyName");
 		this.compName = companyName;
 	}
 
 	public void setCompNip(String companyNip) {
-		System.out.println("Inside setter of CompanyNIP");
 		this.compNip = companyNip;
 	}
 
 	@Override
 	public void printInformations() {
-		printService.printData(compName);
-		printService.printData(compNip);
+		System.out.println("Company informations: ");
+		printService.printData("Company name: " + compName);
+		printService.printData("Company NIP: " + compNip);
+		
+		System.out.println("Specialists: ");
+		for (Specialist e : specialists) {
+			printService.printData(e.introduceSpecialist());
+		}
 	}
 
 	@Override
 	public void printDate() {
-		dateService.getDate();
+		printService.printData("Renovation will start in " + dateService.getDate().format(formatter));
 	}
 
 	@Override
 	public void printPrice() {
+		double totalCost = 0;
 		
 		 for (Specialist e : specialists) {
-			 System.out.println(e.getPrices());		
+			 System.out.print(e.getClass().getSimpleName() + " price: ");
+			 printService.printData(e.getPrices().toString());
+			 
+			 totalCost += e.getPrices();
 		 }
+		 System.out.println("Total cost of renovation: " + totalCost);
 	}
 }
 
