@@ -9,7 +9,7 @@ public class Electrician implements Specialist {
 		
 	}
 	
-	public Electrician(SpecialistType type, PriceServiceImpl priceService) {
+	public Electrician(SpecialistType type, PriceService priceService) {
 		this.type = type;
 		this.priceService = priceService;
 	}

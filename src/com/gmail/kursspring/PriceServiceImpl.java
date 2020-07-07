@@ -12,8 +12,8 @@ public class PriceServiceImpl implements PriceService {
 	
 	@Override
 	public double getPrice(SpecialistType type) {
-		
 		return tariff.get(type);
 	}
+	
 
 }

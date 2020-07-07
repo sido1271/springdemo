@@ -5,11 +5,13 @@ public class Decorator implements Specialist {
 	private SpecialistType type;
 	private PriceService priceService;
 	
+	/*
 	public Decorator() {
 		
 	}
+	*/
 
-	public Decorator(SpecialistType type, PriceServiceImpl priceService) {
+	public Decorator(SpecialistType type, PriceService priceService) {
 		this.type = type;
 		this.priceService = priceService;
 	}

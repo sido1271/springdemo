@@ -1,15 +1,16 @@
 package com.gmail.kursspring;
 
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class SpringDemoApp {
 
 	public static void main(String[] args) {
 		
-		ClassPathXmlApplicationContext context = 
-				new ClassPathXmlApplicationContext("applicationContext.xml");
+		AnnotationConfigApplicationContext context = 
+				new AnnotationConfigApplicationContext(CompanyConfig.class);
 		
-		Company company = context.getBean("myRenovationCompany", Company.class);
+		Company company = context.getBean("renovationCompany", Company.class);
 		
 		company.printInformations();
 		company.printPrice();

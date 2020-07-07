@@ -4,11 +4,16 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Locale;
 
+import org.springframework.beans.factory.annotation.Value;
+
 public class RenovationCompany implements Company {
 	
 	private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MMMM yyyy", new Locale("en", "EN"));
 	
+	@Value("${foo.name}")
 	private String compName;
+	
+	@Value("${foo.nip}")
 	private String compNip;
 	
 	private PrintService printService;
